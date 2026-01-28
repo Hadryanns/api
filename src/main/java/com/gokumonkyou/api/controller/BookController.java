@@ -34,7 +34,7 @@ public class BookController {
     @GetMapping()
     public ResponseEntity<?> findAll() {
         if (service.findAll().isEmpty()) {
-            return ResponseEntity.status(404).body("Nenhum livro encontrado");
+            return ResponseEntity.status(204).body("Nenhum livro encontrado");
         }
         return ResponseEntity.ok(service.findAll());
     }

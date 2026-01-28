@@ -56,7 +56,7 @@ public class LoanController {
     // Cadastrar
     @PostMapping()
     public ResponseEntity<?> create(@RequestBody LoanRequestDTO dto) {
-        Loan savedLoan = service.create(dto.getPeopleId(), dto.getBookId());
+        Loan savedLoan = service.create(dto.getCpf(), dto.getIsbn(), dto.getReturnDate());
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")

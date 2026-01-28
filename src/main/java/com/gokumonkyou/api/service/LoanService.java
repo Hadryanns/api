@@ -32,11 +32,11 @@ public class LoanService {
     }
 
     // Criar empréstimo
-    public Loan create(Long peopleId, Long bookId) {
-        People people = peopleRepository.findById(peopleId)
+    public Loan create(String cpf, String isbn, LocalDate returnDate) {
+        People people = peopleRepository.findByCpf(cpf)
                 .orElseThrow(() ->  new IllegalArgumentException("Pessoa não encontrada Teste AAA"));
 
-        Book book = bookRepository.findById(bookId)
+        Book book = bookRepository.findByIsbn(isbn)
                 .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado Teste AAA"));
 
         // Entender como adicionar métodos personalizados no repository do Spring
@@ -48,6 +48,7 @@ public class LoanService {
         loan.setPeople(people);
         loan.setBook(book);
         loan.setLoanDate(LocalDate.now());
+        loan.setReturnDate(returnDate);
         loan.setReturned(false);
 
         return loanRepository.save(loan);
@@ -72,8 +73,8 @@ public class LoanService {
         Loan loan = loanRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Empréstimo não encontrado"));
 
-        loan.setReturned(dto.isReturned());
-        loan.setReturnDate(dto.getReturnDate());
+        loan.setReturned(true);
+        // loan.setReturnDate(dto.getReturnDate());
 
         return loanRepository.save(loan);
     }

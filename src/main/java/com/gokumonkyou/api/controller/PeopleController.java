@@ -49,7 +49,7 @@ public class PeopleController {
     @GetMapping()
     public ResponseEntity<?> findAll() {
         if (service.findAll().isEmpty()) {
-            return ResponseEntity.status(404).body("Nenhuma pessoa encontrada.");
+            return ResponseEntity.status(204).body("Nenhuma pessoa encontrada.");
         }
         return ResponseEntity.ok(service.findAll());
     }

@@ -1,23 +1,34 @@
 package com.gokumonkyou.api.DTOs;
 
+import java.time.LocalDate;
+
 public class LoanRequestDTO {
 
-    private Long peopleId;
-    private Long bookId;
+    private String cpf;
+    private String isbn;
+    private LocalDate returnDate;
 
-    public Long getPeopleId() {
-        return peopleId;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setPeopleId(Long peopleId) {
-        this.peopleId = peopleId;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public Long getBookId() {
-        return bookId;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
     }
 }
